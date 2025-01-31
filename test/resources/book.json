@@ -1,0 +1,49 @@
+[
+    {
+        "database": "book",
+        "index": "book",
+        "nodes": {
+            "table": "book",
+            "schema": "library",
+            "columns": [
+                "id",
+                "title"
+            ],
+            "children": [
+                {
+                    "table": "author",
+                    "schema": "literature",
+                    "columns": [
+                        "id",
+                        "name"
+                    ],
+                    "relationship": {
+                        "variant": "object",
+                        "type": "one_to_one",
+                        "foreign_key": {
+                            "child": ["id"],
+                            "parent": ["parent_id"]
+                        }
+                    }
+                },
+                {
+                    "table": "publisher",
+                    "schema": "literature",
+                    "columns": [
+                        "id",
+                        "name",
+                        "address"
+                    ],
+                    "relationship": {
+                        "variant": "array",
+                        "type": "many_to_many",
+                        "foreign_key": {
+                            "child": ["id"],
+                            "parent": ["book_id"]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+]
